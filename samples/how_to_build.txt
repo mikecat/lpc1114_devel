@@ -1,0 +1,4 @@
+How to create program (binary) data:
+$ make (filename).bin
+or
+$ nasm -I../ -o (filename).bin (filename).asm
