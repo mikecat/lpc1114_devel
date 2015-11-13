@@ -816,8 +816,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	LDR %1, prefix, #0]
+%deftok prefix_t prefix
+	LDR %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %defstr str1 %1
 %substr p1 str1 1
@@ -849,8 +851,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	LDRB %1, prefix, #0]
+%deftok prefix_t prefix
+	LDRB %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %error invalid operands
 %endif
@@ -865,8 +869,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	LDRH %1, prefix, #0]
+%deftok prefix_t prefix
+	LDRH %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %error invalid operands
 %endif
@@ -881,8 +887,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	STR %1, prefix, #0]
+%deftok prefix_t prefix
+	STR %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %error invalid operands
 %endif
@@ -897,8 +905,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	STRB %1, prefix, #0]
+%deftok prefix_t prefix
+	STRB %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %error invalid operands
 %endif
@@ -913,8 +923,10 @@
 %undef str2len
 %ifidn suffix, ']'
 %substr prefix str2 1, -2
-	STRH %1, prefix, #0]
+%deftok prefix_t prefix
+	STRH %1, prefix_t, #0]
 %undef prefix
+%undef prefix_t
 %else
 %error invalid operands
 %endif
