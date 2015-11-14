@@ -101,18 +101,12 @@ irq31:
 	BX LR
 
 reset:
-	; disable pullup / pulldown on PIO0_3
-	LDR R7, iocon_pio0_3_addr
-	LDR R6, [R7, #0]
-	LDR R5, iocon_pio0_3_mask
-	ANDS R6, R5
-	STR R6, [R7, #0]
 	; set PIO0_3 as output
-	LDR R7, pio0_dir_addr
+	LDR R7, GPIO0DIR
 	MOVS R6, #8
 	STR R6, [R7, #0]
 	; output to PIO0_3
-	LDR R7, pio0_3_addr
+	LDR R7, GPIO0DATA_PIO0_3
 mainloop:
 	MOVS R6, #8
 	STR R6, [R7, #0]
@@ -121,16 +115,6 @@ mainloop:
 	STR R6, [R7, #0]
 	BL busyloop
 	B mainloop
-
-	align 4
-iocon_pio0_3_addr:
-	dd 0x4004402C
-iocon_pio0_3_mask:
-	dd 0xFFFFFBC0 ; FUNC=0x0, MODE=0x0, HYS=0, OD=0
-pio0_3_addr:
-	dd 0x50000020
-pio0_dir_addr:
-	dd 0x50008000
 
 busyloop:
 	PUSH {R7}
@@ -145,3 +129,7 @@ busyloop_num:
 	dd 1500000
 
 	align 4
+GPIO0DATA_PIO0_3:
+	dd 0x50000020
+GPIO0DIR:
+	dd 0x50008000
